@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import User, Profile
 
 
 class CustomUserAdmin(UserAdmin):
@@ -11,6 +11,7 @@ class CustomUserAdmin(UserAdmin):
     serching_fields = ('email',)
     ordering = ('email',)
 
+    # vaghti vard info yek user beshim field hayi ke dar fieldset moshakhas kardim namayesh dade mishe
     fieldsets = (
         ('Authentication', {
             "fields": (
@@ -22,8 +23,21 @@ class CustomUserAdmin(UserAdmin):
                 'is_staff', 'is_active', 'is_superuser'
             ),
         }),
+        ('Group permission', {
+            "fields": (
+                'groups', 'user_permissions'
+            ),
+        }),
+        ('Important dates', {
+            "fields": (
+                'last_login',
+            ),
+        }),
     )
 
+    # vaghti bekhaim user besazim baiad dar add_fieldsets begim ke karbar baiad che field haei ra poor kone baraye sakht user
+    # password1 va password2 dar models man tarif nashode vali default dar django tarif shode ke baiad moghe sakhte user az password1 va password2 estefade konim
+    # age faght az field password estefade konim user sakhte nemishe
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -33,4 +47,5 @@ class CustomUserAdmin(UserAdmin):
     
 
 
+admin.site.register(Profile)
 admin.site.register(User, CustomUserAdmin)

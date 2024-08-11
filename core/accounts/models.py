@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.utils.translation import gettext_lazy as _
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class UserManager(BaseUserManager):
@@ -10,13 +11,13 @@ class UserManager(BaseUserManager):
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
     """
-
+    
+    # ravand sakhte shodan user maamoli be sorat zire
+    # email va password ra ersal mikonim be function create_user 
+    # manzor az **extra_fields ine ke baghie field ha mesl first_name, is_active, is_staff ...
     def create_user(self, email, password, **extra_fields):
 
-        """
-        Create and save a user with the given email and password.
-        """
-
+        # age karbar email vared nakarde bashe baraye sakht user error daryaft mikone
         if not email:
             raise ValueError(_("The Email must be set"))
         email = self.normalize_email(email)
@@ -25,6 +26,7 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
+    # process create superuser
     def create_superuser(self, email, password, **extra_fields):
 
         """
@@ -42,17 +44,16 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-        
+
+# Custom User 
 class User(AbstractBaseUser, PermissionsMixin):
-    """
-    custom user model
-    """
     email = models.EmailField(max_length=255, unique=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     # is_verified = models.BooleanField(default=False)
     
+    # line paeein baraye inke django bejaye username az email baraye karbar estefade kone(email bejaye username estefade mishe)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -63,4 +64,32 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=250)
+    last_name = models.CharField(max_length=250)
+    image = models.ImageField(null=True, blank=True)
+    description = models.TextField()
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.email
+    
+
+
+# signal
+# moghe e ke User e sakhte shavad ba estefade az code paeein be soorat khodkar profile on User sakhte mishavad
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance) 
+    
+
+
+
     
