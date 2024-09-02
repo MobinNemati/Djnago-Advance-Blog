@@ -15,11 +15,14 @@ urlpatterns = [
 
     # path('cbv-index', views.IndexView.as_view(), name='cbv-index'),
 
-    # ba estefade az RedirectView mishe vaghti karbar vard in url mishe redirect beshe be link e ke dadim
-    path('go-to-maktabkhooneh', RedirectView.as_view(url='https://www.maktabkhooneh.com/'), name='go-to-maktabkhooneh'),
-    path('go-to-index', RedirectView.as_view(pattern_name='blog:cbv-index'), name='go-to-index'),
+    # ba estefade az RedirectView mishe vaghti karbar vard in url mishe redirect beshe be link e ke dadim !bedon estefade az view
+    path('go-to-maktabkhooneh/', RedirectView.as_view(url='https://www.maktabkhooneh.com/'), name='go-to-maktabkhooneh'),
+    path('go-to-index/', RedirectView.as_view(pattern_name='blog:cbv-index'), name='go-to-index'),
 
-    path('go-to-maktab/<int:pk>', views.RedirectToMaktab.as_view(), name='go-to-maktab'),
-    path('post/', views.PostList.as_view(), name='post-list'),
-
+    path('go-to-maktab/<int:pk>/', views.RedirectToMaktab.as_view(), name='go-to-maktab'),
+    path('posts/', views.PostListView.as_view(), name='post-list'),
+    path('post/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('post/create/', views.PostCreateView.as_view(), name='post-create'),
+    path('post/<int:pk>/edit/', views.PostEditView.as_view(), name='post-edit'),
+    path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
 ]

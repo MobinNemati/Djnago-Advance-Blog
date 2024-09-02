@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PostList</title>
+    <title>Post List</title>
+    <style>
+        .img-post{
+            max-width: 400px;
+            max-height: 400px;
+        }
+
+    </style>
 </head>
 <body>
     <h1>blog post</h1>
     {% for post in posts %}
       <div>
-        <h2>{{post.title}}</h2>
-        <H3>{{post.content}}</H3>
+        <a href="{% url 'blog:post-detail' pk=post.id %}"><h2>{{post.id}} - {{post.title}}</h2></a>
+        <H4>{{post.content}}  -  {{post.created_date}}</h4>
+        <a href="{% url 'blog:post-edit' pk=post.id %}">
+            <h5>edit post</h5>
+        </a>
+        <a href="{% url 'blog:post-delete' pk=post.id %}">
+            <h5>delete post</h5>
+        </a>
       </div>
     {% endfor %}
+    <div class="pagination"> 
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div><br><br><br>
+    <a href="{% url 'blog:post-create' %}">Create Post</a>
 </body>
 </html>
