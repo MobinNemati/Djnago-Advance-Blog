@@ -17,6 +17,7 @@
     {% for post in posts %}
       <div>
         <a href="{% url 'blog:post-detail' pk=post.id %}"><h2>{{post.id}} - {{post.title}}</h2></a>
+        <H4>{{post.author.first_name}}  -  {{post.author.last_name}}</h4>
         <H4>{{post.content}}  -  {{post.created_date}}</h4>
         <a href="{% url 'blog:post-edit' pk=post.id %}">
             <h5>edit post</h5>

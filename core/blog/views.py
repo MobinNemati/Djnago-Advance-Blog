@@ -7,7 +7,8 @@ from accounts.models import User
 from blog.models import Post
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView, DeleteView
 from .forms import PostForm
-# baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim required beshe ezafe konim
+
+# baraye# baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim required beshe ezafe konim
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -145,8 +146,3 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 # va baraye delete kardan baiad safe confrim be karbar neshon bedim ta confrim kone
 # va esm template default on post_confirm_delete.html hast ke mitonim ba template_name esm on ro avaz konim
 class PostDeleteView(LoginRequiredMixin, DeleteView):
-    model = Post
-    success_url = '/blog/posts/'
-
-
-
