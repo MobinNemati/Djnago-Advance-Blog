@@ -6,15 +6,7 @@ from accounts.models import User
 from blog.models import Post
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView, DeleteView
 from .forms import PostForm
-from django.http import HttpResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
-# baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim ezafe konim.
-# dakhel admin va ghesmat etelaat user age berim, ghesmati hast be esme User permissions
-# inja mitonim taein konim user permision anjam che kar haei ro dashte bahse maslan age ino entekhab konim, blog | post | Can change post
-# va dakhel vorodi class marbot be change post PermissionRequiredMixin ro ezafe konim va in field ham dakhel class ezafe konim 
-# permission_required = "blog.change_post" alan dige faghat on user e ke taeein kardim mitone post haro edit kone.
+# baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim required beshe ezafe konim
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
@@ -153,9 +145,7 @@ class PostEditView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
 # baraye delete kardan post mitonim az DeleteView estefade konim
 # va baraye delete kardan baiad safe confrim be karbar neshon bedim ta confrim kone
 # va esm template default on post_confirm_delete.html hast ke mitonim ba template_name esm on ro avaz konim
-class PostDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
-    permission_required = "blog.delete_post"
-
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/blog/posts/'
 
