@@ -1,12 +1,14 @@
 from typing import Any
 from django.forms import BaseModelForm
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, RedirectView
 from accounts.models import User
 from blog.models import Post
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView, DeleteView
 from .forms import PostForm
+from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim ezafe konim.
 # dakhel admin va ghesmat etelaat user age berim, ghesmati hast be esme User permissions
