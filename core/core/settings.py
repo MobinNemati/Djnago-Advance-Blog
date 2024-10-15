@@ -140,3 +140,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # paeein gofte shode ke custom User dar koja gharar dare
 # user manager config
 AUTH_USER_MODEL = 'accounts.User'
+
+
+
+# vaghti code paeein ro ezafe konim be project, baraye didan har page e ke ba api sakhte shode baiad login karde bashim 
+
+# rest framework
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+# }

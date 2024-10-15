@@ -8,7 +8,7 @@ from ...models import Post
 
 
 
-#serialize kardan mesle form sakhtan hast ham Form darim ham ModelForm darim inja ham Serializer darim ModelSerializer ham darim
+#serialize kardan mesle form sakhtan hast. ham Form darim ham ModelForm inja ham Serializer darim ModelSerializer ham darim
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post

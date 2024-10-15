@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # baraye didan dokme login, logout dar page haye api baiad url paein ro vard konim
+    path('api-auth/', include('rest_framework.urls')),
     path('blog/', include('blog.urls')),
     path('accounts/', include("django.contrib.auth.urls")),
 
