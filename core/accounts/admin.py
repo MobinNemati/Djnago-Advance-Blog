@@ -35,9 +35,9 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
-    # vaghti bekhaim user besazim baiad dar add_fieldsets begim ke karbar baiad che field haei ra poor kone baraye sakht user
+    # vaghti bekhaim user besazim baiad dar add_fieldsets begim ke karbar baiad che field haei ro poor kone baraye sakht user
     # password1 va password2 dar models man tarif nashode vali default dar django tarif shode ke baiad moghe sakhte user az password1 va password2 estefade konim
-    # age faght az field password estefade konim user sakhte nemishe
+    # age faghat az field password estefade konim user sakhte nemishe
     add_fieldsets = (
         (None, {
             'classes': ('wide',),

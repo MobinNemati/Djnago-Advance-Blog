@@ -114,10 +114,11 @@ class PostCreateView(FormView):
         return super().form_valid(form)
 '''
 
+
 # neshon dadan form va save automatic ba CreateView
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    # esme deafault template create view post_form.html hast ke mishe ba template_name esm on ro taghir dad
+    # esme default template create view post_form.html hast ke mishe ba template_name esm on ro taghir dad
 
     # mishe az fields estefade kard baraye neshon dadan fields haye form 
     # ya mitonim az form_class estefade konim ke form e ke az ghabl amade kardim ro neshon bedim
@@ -128,7 +129,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         # ba har account e login bashi code paeein ba on acc ghesmat author form ro por mikone
-        form.instance.author = self.request.user
+        form.instance.author = self.request.user.profile
         return super().form_valid(form)
     
 

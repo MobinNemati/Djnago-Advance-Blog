@@ -10,7 +10,7 @@ urlpatterns = [
     #path('fbv-index', views.indexView, name='fbv-index'),
 
     # ba estefade az TemplateView dar url ke mishe mostaghim az yek url vasl shod be template bedon estefade az view 
-    # va mishe context ham ferstad 
+    # va mishe context ham ferstad
     # path('cbv-index', TemplateView.as_view(template_name='index.html', extra_context={'name':'mobin'})),
 
     # path('cbv-index', views.IndexView.as_view(), name='cbv-index'),
@@ -28,7 +28,7 @@ urlpatterns = [
 
     # baraye estefade az api dar appe blog yek url misazim ke maalom she az api estefade mikone in page
     # baad baiad dakhel app blog yek folder besazim be esme api va dakhl on views va url besazim va url paeein ro vasl konim be folder api
-    # dakhel folder api ham view haye maa be api ro misazimrbot
+    # dakhel folder api ham view haye marbot be api ro misazim
     path('api/v1/', include('blog.api.v1.urls'))
 
 ]
