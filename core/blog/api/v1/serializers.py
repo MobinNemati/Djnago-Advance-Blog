@@ -63,7 +63,7 @@ class PostSerializer(serializers.ModelSerializer):
             rep.pop('content', None)
 
 
-        # line paeein migim ke ghabl namayesh, dakhel field category id va name on ro bezar 
+        # line paeein migim ke ghabl namayesh, dakhel field category, id va name on ro bezar 
         # manzor az instance khode object hast
         rep['category'] = CategorySerializer(instance.category, context={'request':request}).data
         return rep

@@ -12,6 +12,7 @@ from rest_framework import viewsets
 from .permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend 
 from rest_framework.filters import SearchFilter, OrderingFilter
+from .paginations import PostPagination
 
 
 
@@ -226,13 +227,43 @@ class PostModelViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(status=True)
     # ba ezafe kardan line haye paeein mitonim filter kardan va search va sort kardan ro ezafe konim 
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['category', 'author', 'status']
+
+
+    # line paeein baraye filter ha vaghti 'exact' mizarim yani faghat yek filter mishe entekhab kard va vaghti kenaresh 'in' 
+    # mizarim yani mishe 2 ta filter select kard   
+    filterset_fields = {'category':['exact', 'in'], 'author':['exact'], 'status':['exact']}
     search_fields = ['title', 'content']
     ordering_fields = ['published_date']
+    pagination_class = PostPagination
+
+    
+    # mishe dakhel file filters.py khodemon filter besazim. age bekhaim filter e besazim ke range gheymat ro filter kone mitonim
+    # az code zir estefade konim
+    '''
+        from rest_framework import generics
+        from django_filters import rest_framework as filters
+        from myapp import Product
+
+
+        class ProductFilter(filters.FilterSet):
+            min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
+            max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
+
+            class Meta:
+                model = Product
+                fields = ['category', 'in_stock']
+
+
+        class ProductList(generics.ListAPIView):
+            queryset = Product.objects.all()
+            serializer_class = ProductSerializer
+            filter_backends = (filters.DjangoFilterBackend,)
+            filterset_class = ProductFilter
+    '''
 
 
 
-    # code paeein extra action hast. method age khali bashe default get hast.
+    # code paeein extra action hast. methods age khali bashe default get hast.
     # age karbar pk az url nafreste detail=False age karbar pk befreste baiad True bashe 
     # esme function ham mishe esme url.
     @action(methods=['get'], detail=False)

@@ -29,6 +29,6 @@ urlpatterns = [
     # baraye estefade az api dar appe blog yek url misazim ke maalom she az api estefade mikone in page
     # baad baiad dakhel app blog yek folder besazim be esme api va dakhl on views va url besazim va url paeein ro vasl konim be folder api
     # dakhel folder api ham view haye marbot be api ro misazim
-    path('api/v1/', include('blog.api.v1.urls'))
+    path('api/v1/', include('blog.api.v1.urls')),
 
 ]
