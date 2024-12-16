@@ -1,6 +1,15 @@
-Django==5.1
+
+# general modules
+Django==5.0
 python-decouple
 pillow
-djangorestframework
+djangorestframework==3.15
+
+
+# third party modules
 markdown
 django-filter  
+drf-yasg==1.21.8
+
+
+# deployment modules
