@@ -1,9 +1,9 @@
 
 # general modules
-Django==5.0
+Django==4.2
 python-decouple
 pillow
-djangorestframework==3.15
+djangorestframework==3.14
 
 
 # third party modules
