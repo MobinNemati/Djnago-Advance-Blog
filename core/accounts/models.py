@@ -72,6 +72,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=250)
     last_name = models.CharField(max_length=250)
     image = models.ImageField(null=True, blank=True)
+    # description null=True, blank=True
     description = models.TextField()
 
     created_date = models.DateTimeField(auto_now_add=True)
