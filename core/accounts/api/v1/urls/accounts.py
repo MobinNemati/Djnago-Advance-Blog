@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from .. import views
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -8,8 +8,7 @@ from rest_framework_simplejwt.views import (
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-app_name = 'api-v1'
-
+\
 
 urlpatterns = [
     # registration
@@ -17,6 +16,7 @@ urlpatterns = [
 
     # change password
     path('change-password/', views.ChangePasswordApiView.as_view(), name='change_password'),
+    
     # reset password
 
     # login token
@@ -27,8 +27,4 @@ urlpatterns = [
     path('jwt/create/', views.CustomTokenObtainPairView.as_view(), name='jwt-create'),
     path('jwt/refresh/', TokenRefreshView.as_view(), name='jwt-refresh'),
     path('jwt/verify/', TokenVerifyView.as_view(), name='jwt-verify'),
-
-    # Profile
-    path('profile/', views.ProfileApiView.as_view(), name='profile'),
-
 ]
