@@ -1,6 +1,6 @@
 
 from rest_framework import generics
-from .serializers import RegistrationSerializer, AuthTokenSerializer, CustomTokenObtainPairSerializer, ChangePasswordSerializer, ProfileSerializer
+from .serializers import RegistrationSerializer, CustomAuthTokenSerializer, CustomTokenObtainPairSerializer, ChangePasswordSerializer, ProfileSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -11,6 +11,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
 from ...models import Profile
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 
 User = get_user_model()
 
@@ -38,7 +39,7 @@ class RegistrationApiView(generics.GenericAPIView):
 
 # ba class paeen mitonim custom konim ke baad login kardan ba url token/login/ chi bargardone be ma
 class CustomObtainAuthToken(ObtainAuthToken):
-    serializer_class = AuthTokenSerializer
+    serializer_class = CustomAuthTokenSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
@@ -108,3 +109,20 @@ class ProfileApiView(generics.RetrieveUpdateAPIView):
         queryset = self.get_queryset()
         obj = get_object_or_404(queryset, user=self.request.user)
         return obj
+    
+
+
+class TestEmailSend(generics.GenericAPIView):
+
+    def get(self, request, *args, **kwargs):
+
+        send_mail(
+            "han?",
+            "salam khobi dadash.",
+            "mobin.custom@example.com",
+            ["easports@example.com"],
+            fail_silently=False,
+        )
+
+        return Response('email sent')
+    

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, RedirectView
 from accounts.models import User
 from blog.models import Post
-from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView, DeleteView
+from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from .forms import PostForm
 # baraye LoginRequired baiad LoginRequiredMixin be on class e ke mikhaim required beshe ezafe konim
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin

@@ -48,7 +48,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 
 # serializer paeen hamon serializer class ObtainAuthToken hast ke copy kardam va bejaye field username be email taghir dadam
-class AuthTokenSerializer(serializers.Serializer):
+class CustomAuthTokenSerializer(serializers.Serializer):
     email = serializers.CharField(
         label=_("Email"),
         write_only=True
@@ -78,6 +78,8 @@ class AuthTokenSerializer(serializers.Serializer):
             if not user:
                 msg = _('Unable to log in with provided credentials.')
                 raise serializers.ValidationError(msg, code='authorization')
+            if not user.is_verified:
+                raise serializers.ValidationError({'details':'user is not verified'})
         else:
             msg = _('Must include "username" and "password".')
             raise serializers.ValidationError(msg, code='authorization')
@@ -91,8 +93,13 @@ class AuthTokenSerializer(serializers.Serializer):
 # alan neveshtam ke dakhel validate_data ke refresh token va access token hast bia va email va user_id ham ezafe kon va return kon
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
+
+
+    # test !!!!!!!!!!!!!!!!!!!!!!!
     def validate(self, attrs):
         validate_data = super().validate(attrs)
+        if not self.user.is_verified:
+            raise serializers.ValidationError({'details':'user is not verified'})
         validate_data['email'] = self.user.email
         validate_data['user_id'] = self.user.id
         return validate_data
