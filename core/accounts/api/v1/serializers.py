@@ -47,7 +47,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 
 
-# serializer paeen hamon serializer class ObtainAuthToken hast ke copy kardam va bejaye field username be email taghir dadam
+# serializer paeen hamon serializer class ObtainAuthToken hast ke copy kardam. va bejaye field username be email taghir dadam
 class CustomAuthTokenSerializer(serializers.Serializer):
     email = serializers.CharField(
         label=_("Email"),

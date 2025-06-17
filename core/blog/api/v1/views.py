@@ -149,7 +149,6 @@ class PostDetail(APIView):
 '''
     
 
-
 '''
 # dakhel RetrieveUpdateDestroyAPIView khodesh function haye get, put, patch, delete ro dare
 class PostDetail(RetrieveUpdateDestroyAPIView):
@@ -159,7 +158,6 @@ class PostDetail(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.filter(status=True)
 
 '''
-
 
 
 
@@ -180,7 +178,7 @@ class PostViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     
 
-    # manzor az retrieve(get) gerfatan yekdone object hast
+    # manzor az retrieve(get), gerfatan yekdone object hast
     def retrieve(self, request, pk=None):
         post_object = get_object_or_404(self.queryset, pk=pk)
         serializer = PostSerializer(post_object)

@@ -23,7 +23,7 @@ class PostSerializer(serializers.ModelSerializer):
     absolute_url = serializers.SerializerMethodField()
 
     # bedon line paeein vaghti ma vard post-list mishim field category ro be ma id categorish neshon mide
-    # vorodi line paeein goftim ke tedad category har post bishtar az 1 nist(many=False), va goftim ke jaye id name category ro 
+    # vorodi line paeein goftim ke tedad category har post bishtar az 1 nist(many=False), va goftim ke jaye id, name category ro 
     # neshon bede, va akhari ham goftim haame category haro biar baraye inke vaghti bekhaim category post ro avaz konim betonim 
     # baghie category haro bebinim
     category = serializers.SlugRelatedField(many=False, slug_field='name', queryset=Category.objects.all())
