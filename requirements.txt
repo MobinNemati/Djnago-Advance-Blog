@@ -4,6 +4,8 @@ Django==4.2
 python-decouple
 pillow
 djangorestframework==3.14
+djangorestframework-simplejwt
+
 
 
 # third party modules
