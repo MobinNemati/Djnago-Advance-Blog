@@ -15,3 +15,5 @@ drf-yasg==1.21.8
 
 
 # deployment modules
+black
+flake8
