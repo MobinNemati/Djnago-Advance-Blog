@@ -35,7 +35,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ['id', 'author', 'title', 'content', 'image', 'category', 'snippet', 'status', 'relative_url', 'absolute_url', 'created_date', 'published_date']
         # dakhel vorodi line paeein har field e ro ezafe konim on field faghat ghabel didan mishe va dige 
         # dakhel form ha vojod nadare va ghabel taghir nist 
-        read_only_fields = ['author',] 
+        read_only_fields = ['author',]
 
 
     def get_absolute_url(self, obj):
