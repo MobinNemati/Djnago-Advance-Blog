@@ -1,40 +1,40 @@
+<h1 align="center">
+🚀 Django Advanced Blog & REST API
+</h1>
 
-📱 Django Advanced Blog & API Project
-A comprehensive Django-based web application with RESTful API implementation, featuring user authentication, blog management, and advanced API capabilities.
+<p align="center">
+A production-ready Django project with Blog, REST API, JWT Authentication, Docker, Swagger and comprehensive testing.
+</p>
 
-https://img.shields.io/badge/Django-4.2-green.svg
-https://img.shields.io/badge/DRF-3.14-blue.svg
-https://img.shields.io/badge/Python-3.8+-yellow.svg
-https://img.shields.io/badge/License-MIT-red.svg
+<p align="center">
 
-📋 Table of Contents
-Overview
+![Django](https://img.shields.io/badge/Django-4.2-092E20?style=for-the-badge&logo=django)
 
-Features
+![DRF](https://img.shields.io/badge/DRF-3.14-red?style=for-the-badge)
 
-Technology Stack
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python)
 
-Project Structure
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-Installation Guide
+</p>
 
-Local Development
+---
 
-Docker Setup
+## 📑 Table of Contents
 
-Configuration
-
-Running the Application
-
-API Documentation
-
-Testing
-
-Deployment Considerations
-
-Contributing
-
-License
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation-guide)
+- [Docker](#-docker-setup)
+- [Configuration](#️-configuration)
+- [Running](#-running-the-application)
+- [API Documentation](#-api-documentation)
+- [Testing](#-testing)
+- [Deployment](#-deployment-considerations)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 🚀 Overview
 This project is a fully-featured Django blog application that combines traditional server-side rendering with modern RESTful API capabilities. It implements custom user authentication, comprehensive blog management, and well-structured API endpoints with JWT and token-based authentication.
@@ -54,94 +54,89 @@ Docker Support for easy deployment
 
 Interactive API Documentation (Swagger/ReDoc)
 
-✨ Features
-👤 User Management
-Custom user model with email as the unique identifier
+## ✨ Features
 
-User registration with password validation
+### 👤 User Management
 
-Email verification system
+- Custom User Model
+- Email Authentication
+- Password Validation
+- Profile Management
+- JWT Authentication
+- Token Authentication
+- Session Authentication
 
-Password change functionality
+---
 
-User profile management
+### 📝 Blog
 
-JWT and Token-based authentication
+- CRUD Operations
+- Categories
+- Draft / Publish
+- Image Upload
+- Pagination
+- Search
+- Filtering
 
-📝 Blog System
-Create, Read, Update, Delete (CRUD) posts
+---
 
-Post categorization
+### 🔥 API
 
-Image upload support
+- REST API
+- Swagger
+- ReDoc
+- JWT
+- Token Authentication
+- Versioning
 
-Post status management (draft/published)
 
-Author attribution
+### 🧪 Testing
+- Comprehensive test suite
+- URL resolution tests
+- View tests
+- Model tests
+- Form tests
 
-Date-based publishing
 
-🔧 API Features
-RESTful endpoints for Posts and Categories
+### 📦 Development Tools
+- Docker containerization
+- Environment variable management with python-decouple
+- Code formatting with Black
+- Linting with Flake8
 
-Filtering, searching, and ordering capabilities
 
-Pagination support
+## 🛠 Technology Stack
 
-Custom permissions (IsOwnerOrReadOnly)
+### Backend
 
-API versioning (v1)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Django | 4.2 | Web Framework |
+| Django REST Framework | 3.14 | REST API |
+| SimpleJWT | Latest | JWT Authentication |
+| drf-yasg | 1.21.8 | Swagger |
+| Pillow | Latest | Image Processing |
 
-Interactive API documentation
+### Database
 
-JWT authentication support
+| Database | Status |
+|----------|--------|
+| SQLite | Development |
+| PostgreSQL | Production |
+| MySQL | Supported |
 
-🧪 Testing
-Comprehensive test suite
+### Development
 
-URL resolution tests
+| Tool | Purpose |
+|------|----------|
+| Docker | Containerization |
+| Docker Compose | Multi Containers |
+| Black | Formatter |
+| Flake8 | Linter |
 
-View tests
+## 📁 Project Structure
 
-Model tests
-
-Form tests
-
-📦 Development Tools
-Docker containerization
-
-Environment variable management with python-decouple
-
-Code formatting with Black
-
-Linting with Flake8
-
-🛠 Technology Stack
-Backend
-Technology	Version	Purpose
-Django	4.2	Web framework
-Django REST Framework	3.14	API development
-Django REST Framework SimpleJWT	Latest	JWT authentication
-Drf-YASG	1.21.8	API documentation
-Django Filters	Latest	API filtering
-Python Decouple	Latest	Environment management
-Database
-SQLite (Development) – Compatible with PostgreSQL/MySQL for production
-
-Containerization
-Docker & Docker Compose
-
-Development Tools
-Black – Code formatter
-
-Flake8 – Code linter
-
-Pillow – Image processing
-
-Markdown – API documentation
-
-📁 Project Structure
-text
+```text
 .
 ├── accounts/                    # User authentication app
 │   ├── admin.py                # Admin configuration
@@ -201,7 +196,9 @@ text
 ├── Dockerfile                 # Docker image configuration
 ├── manage.py                  # Django management script
 └── .env                       # Environment variables
-📦 Installation Guide
+```
+
+### 📦 Installation Guide
 🔧 Prerequisites
 Python 3.8+
 
@@ -211,15 +208,16 @@ Git
 
 Docker (optional)
 
-🏠 Local Development Setup
+## 🏠 Local Development Setup
 1. Clone the Repository
 
-bash
+```bash
 git clone https://github.com/MobinNemati/Djnago-Advance-Blog.git
-cd django-blog-api
+cd Djnago-Advance-Blog
+```
 2. Create and Activate Virtual Environment
 
-bash
+```bash
 # Create virtual environment
 python -m venv venv
 
@@ -228,41 +226,56 @@ venv\Scripts\activate
 
 # Activate on macOS/Linux
 source venv/bin/activate
+```
+
 3. Install Dependencies
 
-bash
+```bash
 pip install -r requirements.txt
+```
 4. Configure Environment Variables
 
 Create a .env file in the root directory:
 
-bash
+```bash
 # .env file
 SECRET_KEY=your-secret-key-here
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
 5. Apply Database Migrations
 
-bash
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
+
 6. Create Superuser
 
-bash
+```bash
 python manage.py createsuperuser
+```
+
 7. Collect Static Files
 
-bash
+```bash
 python manage.py collectstatic
+```
+
 8. Run Development Server
 
-bash
+```bash
 python manage.py runserver
-🐳 Docker Setup
+```
+
+### 🐳 Docker Setup
 1. Build and Run with Docker Compose
 
-bash
+```bash
 docker-compose up --build
+```
+
 2. Access the Application
 
 Web Application: http://localhost:8000
@@ -273,13 +286,17 @@ API Endpoints: http://localhost:8000/blog/api/v1/
 
 3. Run Database Migrations Inside Container
 
-bash
+```bash
 docker-compose exec backend python manage.py migrate
+```
+
 4. Create Superuser Inside Container
 
-bash
+```bash
 docker-compose exec backend python manage.py createsuperuser
-⚙️ Configuration
+```
+
+### ⚙️ Configuration
 Core Settings
 Setting	Description	Default
 DEBUG	Development mode toggle	True
@@ -296,31 +313,35 @@ Token Authentication – API token-based authentication
 JWT Authentication – JSON Web Token authentication
 
 Email Configuration
-python
+```python
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp4dev'  # or your SMTP server
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False
+```
 For development, you can use the console backend:
 
-python
+```python
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-💻 Running the Application
+```
+
+### 💻 Running the Application
 Access Points
 Endpoint	Description	URL
 Home	Main index page	http://localhost:8000/
 Admin	Django admin panel	http://localhost:8000/admin
 Blog	Blog posts list	http://localhost:8000/blog/posts/
 Login	User login page	http://localhost:8000/accounts/login/
+
 API Endpoints
-Method	Endpoint	Description
-GET	/blog/api/v1/post/	List all posts
-POST	/blog/api/v1/post/	Create a new post
-GET	/blog/api/v1/post/{id}/	Retrieve a post
-PUT	/blog/api/v1/post/{id}/	Update a post
-PATCH	/blog/api/v1/post/{id}/	Partial update
-DELETE	/blog/api/v1/post/{id}/	Delete a post
-GET	/blog/api/v1/category/	List categories
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | /blog/api/v1/post | List Posts |
+| POST | /blog/api/v1/post | Create |
+| PUT | /blog/api/v1/post/{id} | Update |
+| PATCH | /blog/api/v1/post/{id} | Partial Update |
+| DELETE | /blog/api/v1/post/{id} | Delete |
+
 Authentication Endpoints
 Method	Endpoint	Description
 POST	/accounts/api/v1/token/login/	Get authentication token
@@ -331,38 +352,43 @@ POST	/accounts/api/v1/jwt/verify/	Verify JWT token
 API Authentication Examples
 Token Authentication
 
-bash
+```bash
 curl -X POST http://localhost:8000/accounts/api/v1/token/login/ \
   -H "Content-Type: application/json" \
   -d '{"email": "user@example.com", "password": "yourpassword"}'
-JWT Authentication
+```
 
-bash
+JWT Authentication
+```bash
 curl -X POST http://localhost:8000/accounts/api/v1/jwt/create/ \
   -H "Content-Type: application/json" \
   -d '{"email": "user@example.com", "password": "yourpassword"}'
-Using Token in API Requests
+```
 
-bash
+Using Token in API Requests
+```bash
 curl -X GET http://localhost:8000/blog/api/v1/post/ \
   -H "Authorization: Token your-token-here"
-Using JWT in API Requests
+```
 
-bash
+Using JWT in API Requests
+```bash
 curl -X GET http://localhost:8000/blog/api/v1/post/ \
   -H "Authorization: Bearer your-access-token"
-📚 API Documentation
-The project includes interactive API documentation using drf-yasg:
+```
 
-Swagger UI: http://localhost:8000/swagger/
+## 📚 API Documentation
 
-ReDoc: http://localhost:8000/redoc/
+| Tool | URL |
+|------|-----|
+| Swagger | http://localhost:8000/swagger/ |
+| ReDoc | http://localhost:8000/redoc/ |
+| OpenAPI JSON | http://localhost:8000/swagger/output.json |
 
-JSON Schema: http://localhost:8000/swagger/output.json
 
 API Features
 Filtering
-bash
+```bash
 # Filter by category
 GET /blog/api/v1/post/?category=1
 
@@ -371,22 +397,24 @@ GET /blog/api/v1/post/?status=true
 
 # Filter by author
 GET /blog/api/v1/post/?author=1
+
 Searching
-bash
 # Search in title and content
 GET /blog/api/v1/post/?search=keyword
+
 Ordering
-bash
 # Order by published date
 GET /blog/api/v1/post/?ordering=published_date
 GET /blog/api/v1/post/?ordering=-published_date
+
 Pagination
-bash
 # Custom pagination with page size
 GET /blog/api/v1/post/?page=1
-🧪 Testing
+```
+
+## 🧪 Testing
 Running Tests
-bash
+```bash
 # Run all tests
 python manage.py test
 
@@ -399,15 +427,9 @@ python manage.py test blog.tests.test_blog_views
 # Run with verbosity
 python manage.py test --verbosity=2
 Test Coverage
-The project includes comprehensive tests for:
+```
 
-Test Category	Files	Coverage
-Models	test_blog_model.py	✅ Model creation, relationships
-Views	test_blog_views.py	✅ URL resolution, responses
-URLs	test_blog_urls.py	✅ URL patterns, reversals
-Forms	test_blog_form.py	✅ Form validation, data handling
-Test Structure Example
-python
+```python
 class TestBlogView(TestCase):
     def setUp(self):
         # Setup test data
@@ -418,46 +440,30 @@ class TestBlogView(TestCase):
         # Test view response
         response = self.client.get(reverse('blog:post-list'))
         self.assertEqual(response.status_code, 200)
-🚀 Deployment Considerations
+```
+## 🚀 Deployment Considerations
 Production Settings
-Security
 
-Set DEBUG = False
+### Security
 
-Use a strong SECRET_KEY
+- DEBUG=False
+- Strong SECRET_KEY
+- HTTPS
+- ALLOWED_HOSTS
 
-Configure ALLOWED_HOSTS properly
+### Database
 
-Enable HTTPS
+- PostgreSQL
+- Connection Pooling
 
-Database
+### Performance
 
-Switch from SQLite to PostgreSQL or MySQL
-
-Configure database connection pooling
-
-Static & Media Files
-
-Use CDN for static files
-
-Configure S3 or similar for media storage
-
-Email
-
-Configure production SMTP server
-
-Set up email verification flow
-
-Performance
-
-Enable caching (Redis/Memcached)
-
-Use Gunicorn/uWSGI for WSGI server
-
-Configure Nginx as reverse proxy
+- Redis
+- Gunicorn
+- Nginx
 
 Sample Production Environment Variables
-bash
+```bash
 # .env.production
 SECRET_KEY=your-production-secret-key
 DEBUG=False
@@ -470,43 +476,44 @@ EMAIL_HOST_USER=your-email@gmail.com
 EMAIL_HOST_PASSWORD=your-app-password
 STATIC_URL=/static/
 MEDIA_URL=/media/
-🤝 Contributing
+```
+
+## 🤝 Contributing
 We welcome contributions! Please follow these steps:
 
 Fork the repository
 
 Create a feature branch
 
-bash
+```bash
 git checkout -b feature/amazing-feature
 Make your changes
 
 Run tests
 
-bash
+
 python manage.py test
 Format code
 
-bash
 black .
 flake8 .
 Commit changes
 
-bash
 git commit -m "Add amazing feature"
 Push to branch
 
 bash
 git push origin feature/amazing-feature
 Create Pull Request
+```
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
 
-📞 Support
+## 📞 Support
 For support, email 6ix.mobin@gmail.com or create an issue in the repository.
 
-🙏 Acknowledgments
+## 🙏 Acknowledgments
 Django Community for the excellent framework
 
 Django REST Framework team for API tools
@@ -521,5 +528,13 @@ Documentation	Read Docs
 Issues	Report Issue
 Changelog	View Changes
 Demo	Live Demo
-Made with ❤️ by Mobin Nemati
 
+---
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a Star.
+
+Made with ❤️ by **Mobin Nemati**
+
+</div>
