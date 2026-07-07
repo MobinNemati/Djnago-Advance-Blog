@@ -1,3 +1,4 @@
+
 📱 Django Advanced Blog & API Project
 A comprehensive Django-based web application with RESTful API implementation, featuring user authentication, blog management, and advanced API capabilities.
 
@@ -22,8 +23,6 @@ Local Development
 Docker Setup
 
 Configuration
-
-Database Setup
 
 Running the Application
 
@@ -127,21 +126,19 @@ Drf-YASG	1.21.8	API documentation
 Django Filters	Latest	API filtering
 Python Decouple	Latest	Environment management
 Database
-SQLite (Development)
-
-Compatible with PostgreSQL/MySQL for production
+SQLite (Development) – Compatible with PostgreSQL/MySQL for production
 
 Containerization
 Docker & Docker Compose
 
 Development Tools
-Black - Code formatter
+Black – Code formatter
 
-Flake8 - Code linter
+Flake8 – Code linter
 
-Pillow - Image processing
+Pillow – Image processing
 
-Markdown - API documentation
+Markdown – API documentation
 
 📁 Project Structure
 text
@@ -236,6 +233,7 @@ source venv/bin/activate
 bash
 pip install -r requirements.txt
 4. Configure Environment Variables
+
 Create a .env file in the root directory:
 
 bash
@@ -291,11 +289,11 @@ AUTH_USER_MODEL	Custom user model	accounts.User
 Authentication Settings
 The project supports multiple authentication methods:
 
-Session Authentication - Browser-based login
+Session Authentication – Browser-based login
 
-Token Authentication - API token-based authentication
+Token Authentication – API token-based authentication
 
-JWT Authentication - JSON Web Token authentication
+JWT Authentication – JSON Web Token authentication
 
 Email Configuration
 python
@@ -503,7 +501,7 @@ git push origin feature/amazing-feature
 Create Pull Request
 
 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License – see the LICENSE file for details.
 
 📞 Support
 For support, email 6ix.mobin@gmail.com or create an issue in the repository.
