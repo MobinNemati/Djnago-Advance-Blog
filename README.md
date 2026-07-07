@@ -297,20 +297,23 @@ docker-compose exec backend python manage.py createsuperuser
 ```
 
 ### ⚙️ Configuration
-Core Settings
-Setting	Description	Default
-DEBUG	Development mode toggle	True
-SECRET_KEY	Django secret key	Required
-ALLOWED_HOSTS	Allowed hostnames	*
-AUTH_USER_MODEL	Custom user model	accounts.User
-Authentication Settings
+
+### Core Settings
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| `DEBUG` | Development mode toggle | `True` |
+| `SECRET_KEY` | Django secret key | Required |
+| `ALLOWED_HOSTS` | Allowed hostnames | `*` |
+| `AUTH_USER_MODEL` | Custom user model | `accounts.User` |
+
+### Authentication
+
 The project supports multiple authentication methods:
 
-Session Authentication – Browser-based login
-
-Token Authentication – API token-based authentication
-
-JWT Authentication – JSON Web Token authentication
+- ✅ Session Authentication
+- ✅ Token Authentication
+- ✅ JWT Authentication
 
 Email Configuration
 ```python
@@ -325,13 +328,17 @@ For development, you can use the console backend:
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ```
 
-### 💻 Running the Application
-Access Points
-Endpoint	Description	URL
-Home	Main index page	http://localhost:8000/
-Admin	Django admin panel	http://localhost:8000/admin
-Blog	Blog posts list	http://localhost:8000/blog/posts/
-Login	User login page	http://localhost:8000/accounts/login/
+## 💻 Running the Application
+
+### Access Points
+
+| Endpoint | Description | URL |
+|----------|-------------|-----|
+| Home | Main index page | http://localhost:8000/ |
+| Admin | Django Admin Panel | http://localhost:8000/admin/ |
+| Blog | Blog Posts | http://localhost:8000/blog/posts/ |
+| Login | User Login | http://localhost:8000/accounts/login/ |
+
 
 API Endpoints
 | Method | Endpoint | Description |
@@ -342,40 +349,56 @@ API Endpoints
 | PATCH | /blog/api/v1/post/{id} | Partial Update |
 | DELETE | /blog/api/v1/post/{id} | Delete |
 
-Authentication Endpoints
-Method	Endpoint	Description
-POST	/accounts/api/v1/token/login/	Get authentication token
-POST	/accounts/api/v1/token/logout/	Logout (invalidate token)
-POST	/accounts/api/v1/jwt/create/	Create JWT token
-POST	/accounts/api/v1/jwt/refresh/	Refresh JWT token
-POST	/accounts/api/v1/jwt/verify/	Verify JWT token
-API Authentication Examples
-Token Authentication
+### 🔐 Authentication Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| **POST** | `/accounts/api/v1/token/login/` | Get authentication token |
+| **POST** | `/accounts/api/v1/token/logout/` | Logout and invalidate token |
+| **POST** | `/accounts/api/v1/jwt/create/` | Create JWT access & refresh tokens |
+| **POST** | `/accounts/api/v1/jwt/refresh/` | Refresh JWT access token |
+| **POST** | `/accounts/api/v1/jwt/verify/` | Verify JWT access token |
+
+---
+
+## 🔑 API Authentication Examples
+
+### Token Authentication
 
 ```bash
 curl -X POST http://localhost:8000/accounts/api/v1/token/login/ \
   -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "yourpassword"}'
+  -d '{
+        "email": "user@example.com",
+        "password": "yourpassword"
+      }'
 ```
 
-JWT Authentication
+### JWT Authentication
+
 ```bash
 curl -X POST http://localhost:8000/accounts/api/v1/jwt/create/ \
   -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "yourpassword"}'
+  -d '{
+        "email": "user@example.com",
+        "password": "yourpassword"
+      }'
 ```
 
-Using Token in API Requests
+### Using Token Authentication
+
 ```bash
 curl -X GET http://localhost:8000/blog/api/v1/post/ \
   -H "Authorization: Token your-token-here"
 ```
 
-Using JWT in API Requests
+### Using JWT Authentication
+
 ```bash
 curl -X GET http://localhost:8000/blog/api/v1/post/ \
   -H "Authorization: Bearer your-access-token"
 ```
+
 
 ## 📚 API Documentation
 
